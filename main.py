@@ -87,6 +87,11 @@ def main():
     total_cost_dollar = sum(costs)
     total_cost_yen = total_cost_dollar * EXCHANGE_RATE
     total_tokens = sum(tokens)
+    if total_tokens > 0:
+        average_cost_per_thousand_tokens = total_cost_dollar / total_tokens * 1000
+        st.sidebar.markdown(f"**Average cost per 1000 tokens: ${average_cost_per_thousand_tokens:.5f}**")
+    else:
+        st.sidebar.markdown("**Average cost per 1000 tokens: N/A (No tokens used yet)**")
     average_cost_per_thousand_tokens = total_cost_dollar / total_tokens * 1000
     st.sidebar.markdown(f"**Total cost: ${total_cost_dollar:.5f} ({total_cost_yen:.0f}円)**")
     st.sidebar.markdown(f"**Total tokens: {total_tokens}**")
